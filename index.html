@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <title>GD-INSIGHT - Web Components Playground</title>
-    <script type="module" src="https://staging.anywhere.gooddata.com/components/d96366a8366b4db481950eaa2e20eefe.js?auth=sso"></script>
+    <script type="module" src="https://internal-testing.staging.stg11.panther.intgdc.com/components/a592c834f87f47f9988355de74232c06.js?auth=sso"></script>
 </head>
 <body>
     <menu>
@@ -16,15 +16,26 @@
         <p><label>
             Select insight
             <select id="insight-selector">
-                <option selected value="47c793ff-3f38-438e-888c-e66d23072f16">A line chart</option>
-                <option value="30d1efbd-c2e9-4c0e-b0bf-72b2b8d5ffe2">Pie chart</option>
+                <option value="39686bbf-5047-4c84-b770-e5356a5ddd3a">A line chart</option>
+                <option value="de6092cf-d243-4987-918b-8aac3ecd26cc">Pie chart</option>
+                <option value="a97a63d9-96b4-4710-b10f-fc1392969766">Bullet chart</option>
+                <option value="2464c24f-c795-40f9-abbd-31cae95f255f">Area chart</option>
+                <option value="26153cc9-59e6-4aa4-aeed-f6d79dd8881b">Bar chart</option>
+                <option value="2e158045-487a-4409-97c5-cbdc82b31a5e">bubble chart</option>
+                <option value="1221a7be-5aa1-44cf-a02b-9eebbc93ad1a">column chart</option>
+                <option value="f20ce1d0-a5e7-4e20-a532-fe8e8cc672b3">combo chart</option>
+                <option value="12e502eb-1c57-4e1f-ad4e-f21147441c43">head2 chart</option>
+                <option value="c3297fec-692c-4ab3-8d0d-a0ad67a20d97">heat chart</option>
+                <option value="24dd340b-fd58-4a84-8c7e-513af36ad422">scatter chart</option>
+                <option selected value="084195bf-93a3-4df5-9549-50a9c83a001b">table chart</option>
+                <option value="ff68fc91-f488-41ee-85d4-fcfbc4c4bb5e">tre chart</option>
             </select>
         </label></p>
         <p><label>
             Select locale
             <select id="locale">
                 <option selected value="en-US">en-US</option>
-                <option value="ja-JP">ja-JP</option>
+                <option value="zh-Hans">zh-Hans</option>
             </select>
         </label></p>
         <p><label><input type="checkbox" id="show-title"/>Show title</label></p>
@@ -32,11 +43,19 @@
     </section>
     <section>
         <h2>Result</h2>
+        <p>live chart</p>
         <gd-insight
                 id="insight"
                 style="height: 500px;"
-                insight="47c793ff-3f38-438e-888c-e66d23072f16"
+                insight="084195bf-93a3-4df5-9549-50a9c83a001b"
         ></gd-insight>
+        <!-- <p>static chart</p>
+        <gd-insight
+                style="height: 500px;"
+                workspace="huyen_child_1"
+                insight="b710b84ac3d84204b1e67cb991ef9c53:7f57c58d-069d-4f8c-9a68-368c549926bc"
+                title
+        ></gd-insight> -->
     </section>
     <section>
         <h2>Event log</h2>
