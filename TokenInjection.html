@@ -1,0 +1,65 @@
+<!-- (C) 2022 GoodData Corporation -->
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>Embedded GoodData Analytical Designer</title>
+        <style>
+            body {
+                font-family: "Avenir", "Helvetica Neue", Arial, sans-serif;
+            }
+
+            frame {
+                border-top: 1px solid silver;
+            }
+        </style>
+    </head>
+    <body>
+        <pre id="embedded-insight-frame-url"></pre>
+
+        <iframe
+            title="AD"
+            id="embedded-insight-frame"
+            src="https://qa.latest.stg11.panther.intgdc.com/dashboards/embedded/#/workspace/6ec22e8f7cf54713965b26afdf6cf66c/dashboard/c70f6cca-4616-4264-b669-4faabdfb31c2/?showNavigation=1&apiTokenAuthentication=true"
+            width="1300"
+            height="800"
+        ></iframe>
+        <script>
+            console.log("#PARENT: Setup parent frame message listener");
+
+            window.addEventListener(
+                "message",
+                function (e) {
+                    console.log("#PARENT: Post message received", e.data.gdc.event);
+
+                    if (e.data.gdc.event.name === "listeningForApiToken") {
+                        const postMessageStructure = {
+                            gdc: {
+                                product: "dashboard",
+                                event: {
+                                    name: "setApiToken",
+                                    data: {
+                                        token:
+                                            "<token>",
+                                    },
+                                },
+                            },
+                        };
+                        console.log("#PARENT: Sending token to embedded window");
+
+                        const origin = "*";
+                        const iframe = document.getElementById("embedded-insight-frame").contentWindow;
+                        iframe.postMessage(postMessageStructure, origin);
+                    }
+                },
+                false,
+            );
+
+            window.onload = function () {
+                const iframe = document.getElementById("embedded-insight-frame");
+                const pre = document.getElementById("embedded-insight-frame-url");
+                pre.innerHTML = iframe.src;
+            };
+        </script>
+    </body>
+</html>
